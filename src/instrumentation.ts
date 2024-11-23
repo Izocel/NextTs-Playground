@@ -1,6 +1,6 @@
 import { registerOTel } from "@vercel/otel";
-import { ProcessTitle } from "../next.config";
+import { ProcessName } from "../next.config";
 
 export function register() {
-  registerOTel(ProcessTitle);
+  registerOTel(ProcessName);
 }

@@ -4,9 +4,11 @@
   "buildNumber": "0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
     "start": "next start",
+    "build": "next build",
+    "clean": "rm -rf .next/ | rm -rf node_modules/ | rm -rf package-lock.json",
+    "cook": "npm run clean && npm i && npm run build && npm run start",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbopack --experimental-https",
     "lint": "next lint"
   },
   "dependencies": {
@@ -14,17 +16,22 @@
     "@opentelemetry/instrumentation": "latest",
     "@opentelemetry/sdk-logs": "latest",
     "@vercel/otel": "latest",
+    "net": "latest",
     "next": "latest",
     "next-ts-playground": "file:",
-    "NextTs-Playgound": "file:",
-    "playground": "file:",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "tls": "latest",
+    "web-push": "latest"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "latest",
+    "@eslint/js": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/web-push": "latest",
+    "cross-env": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",

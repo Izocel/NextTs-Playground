@@ -42,5 +42,6 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "cSpell.enabled": true,
-  "cSpell.language": "en,fr"
+  "cSpell.language": "en,fr",
+  "cSpell.words": ["webpush"]
 }

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import PushNotificationManager from "./_components/PushNotificationManager";
+import PWAPrompt from "./_components/PWAPrompt";
+import WebVitals from "./_components/WebVitals";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,6 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <WebVitals />
+        <PushNotificationManager />
+        <PWAPrompt />
         {children}
       </body>
     </html>
