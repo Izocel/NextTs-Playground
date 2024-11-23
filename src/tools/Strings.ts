@@ -4,7 +4,6 @@ export function urlBase64ToUint8Array(base64String: string) {
     .replace(/\\-/g, "+")
     .replace(/_/g, "/");
 
-  debugger;
   const rawData = window.atob(base64);
   const outputArray = new Uint8Array(rawData.length);
 

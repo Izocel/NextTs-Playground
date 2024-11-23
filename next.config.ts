@@ -45,8 +45,18 @@ const headers = [
   },
 ];
 
+export const Redirects = {
+  home: {
+    source: "/",
+    destination: "/dashboard",
+    permanent: false,
+  },
+};
+
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
   headers: async () => headers,
+  redirects: async () => Object.values(Redirects),
 };
 
 export default nextConfig;

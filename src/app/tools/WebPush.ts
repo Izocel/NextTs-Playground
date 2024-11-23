@@ -4,11 +4,15 @@ import {
   setVapidDetails,
 } from "web-push";
 
-setVapidDetails(
-  "mailto:webdevteam@rvdprojects.com",
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!
-);
+try {
+  setVapidDetails(
+    "mailto:webdevteam@rvdprojects.com",
+    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
+    process.env.VAPID_PRIVATE_KEY!
+  );
+} catch (error) {
+  debugger;
+}
 
 export type PS = PushSubscription & IPushSubscription;
 
