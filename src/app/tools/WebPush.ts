@@ -1,5 +1,3 @@
-"use client";
-
 import {
   PushSubscription as IPushSubscription,
   sendNotification,
