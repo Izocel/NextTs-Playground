@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import PWAPrompt from "./_components/PWAPrompt";
+import StoreProvider from "./_components/StoreProvider";
 import WebVitals from "./_components/WebVitals";
 import "./globals.css";
 
@@ -33,7 +34,7 @@ export default function RootLayout({
       >
         <WebVitals />
         <PWAPrompt />
-        {children}
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );
