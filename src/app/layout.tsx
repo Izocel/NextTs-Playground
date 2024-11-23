@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Image from "next/image";
 import PWAPrompt from "./_components/PWAPrompt";
 import StoreProvider from "./_components/StoreProvider";
 import WebVitals from "./_components/WebVitals";
@@ -30,12 +31,20 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <WebVitals />
-      <PWAPrompt />
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <Image
+            className="m-2 dark:invert"
+            src="/next.svg"
+            alt="Next.js logo"
+            width={180}
+            height={38}
+            priority
+          />
           {children}
+          <PWAPrompt />
         </body>
       </html>
     </StoreProvider>
