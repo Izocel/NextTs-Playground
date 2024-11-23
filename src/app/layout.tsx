@@ -28,14 +28,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <WebVitals />
-        <PWAPrompt />
-        <StoreProvider>{children}</StoreProvider>
-      </body>
-    </html>
+    <StoreProvider>
+      <WebVitals />
+      <PWAPrompt />
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          {children}
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
