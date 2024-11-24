@@ -1,9 +1,38 @@
-import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
+// https://redux.js.org/usage/nextjs
+// https://dev.to/sasithwarnakafonseka/setting-up-redux-with-persistent-state-rehydration-in-nextjs-h3o
+
+import {
+  Action,
+  combineReducers,
+  configureStore,
+  ThunkAction,
+} from "@reduxjs/toolkit";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
 import { playgroundSlice } from "./Slices/Playground/PlaygroundSlice";
+
+const LocalPersistConfig = {
+  key: "local",
+  storage: storage,
+};
+
+// const SessionPersistConfig = {
+//   key: "session",
+//   storage: sessionStorage,
+// };
+
+const CombinedReducer = combineReducers({
+  playground: playgroundSlice.reducer,
+});
+
+const PersistReducer = persistReducer(LocalPersistConfig, CombinedReducer);
 
 export const makeStore = () => {
   return configureStore({
-    reducer: { playground: playgroundSlice.reducer },
+    reducer: PersistReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }),
   });
 };
 

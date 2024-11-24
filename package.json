@@ -23,8 +23,11 @@
     "next-ts-playground": "file:",
     "react": "latest",
     "react-dom": "latest",
+    "react-loading-indicators": "latest",
     "react-redux": "latest",
+    "redux-persist": "latest",
     "tls": "latest",
+    "usehooks-ts": "latest",
     "web-push": "latest"
   },
   "devDependencies": {
