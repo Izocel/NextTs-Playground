@@ -4,14 +4,22 @@ import {
   setVapidDetails,
 } from "web-push";
 
+export function getPubKey() {
+  return "BELnlIVfKSvD8wWyXz6Q7vjcn_djLU1ggYSY-_L04VnGVMggQU5zJBfLQNRb8wAzMyrKnKStww1CVGHOJsl4t_k";
+}
+
+export function getPrivKey() {
+  return "Rg2Dbrwc1rwzD0qIlbfoRLyB4j_SuInBO5jidxo0u_8";
+}
+
 try {
   setVapidDetails(
     "mailto:webdevteam@rvdprojects.com",
-    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-    process.env.VAPID_PRIVATE_KEY!
+    getPubKey(),
+    getPrivKey()
   );
 } catch (error) {
-  debugger;
+  console.error(error);
 }
 
 export type PS = PushSubscription & IPushSubscription;
@@ -33,20 +41,13 @@ export async function unsubscribeUser() {
   return { success: true };
 }
 
-export async function sendPushNotification(message: string) {
+export async function sendPushNotification(notification: object) {
   if (!subscription) {
     throw new Error("No subscription available");
   }
 
   try {
-    await sendNotification(
-      subscription,
-      JSON.stringify({
-        title: "Test Notification",
-        body: message,
-        icon: "/icon.png",
-      })
-    );
+    await sendNotification(subscription, JSON.stringify(notification));
     return { success: true };
   } catch (error) {
     console.error("Error sending push notification:", error);

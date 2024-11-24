@@ -27,7 +27,7 @@ const headers = [
     ],
   },
   {
-    source: "/sw.js",
+    source: "/Service-Worker.js",
     headers: [
       {
         key: "Content-Type",

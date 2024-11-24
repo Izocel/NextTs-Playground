@@ -1,5 +1,5 @@
 import { Atom, Riple } from "react-loading-indicators";
-import { containers } from "../lib/Theme/Theme";
+import { containers } from "../Theme/Theme";
 
 export function LoadingIndicator() {
   return (
