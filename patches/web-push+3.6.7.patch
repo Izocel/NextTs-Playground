@@ -1,5 +1,5 @@
 diff --git a/node_modules/web-push/src/vapid-helper.js b/node_modules/web-push/src/vapid-helper.js
-index c0305bd..ffdab16 100644
+index c0305bd..df712a2 100644
 --- a/node_modules/web-push/src/vapid-helper.js
 +++ b/node_modules/web-push/src/vapid-helper.js
 @@ -77,7 +77,7 @@ function validateSubject(subject) {
@@ -11,6 +11,24 @@ index c0305bd..ffdab16 100644
    } catch (err) {
      throw new Error('Vapid subject is not a valid URL. ' + subject);
    }
+@@ -105,7 +105,7 @@ function validatePublicKey(publicKey) {
+     throw new Error('Vapid public key must be a URL safe Base 64 (without "=")');
+   }
+ 
+-  publicKey = Buffer.from(publicKey, 'base64url');
++  publicKey = Buffer.from(publicKey, 'base64');
+ 
+   if (publicKey.length !== 65) {
+     throw new Error('Vapid public key should be 65 bytes long when decoded.');
+@@ -126,7 +126,7 @@ function validatePrivateKey(privateKey) {
+     throw new Error('Vapid private key must be a URL safe Base 64 (without "=")');
+   }
+ 
+-  privateKey = Buffer.from(privateKey, 'base64url');
++  privateKey = Buffer.from(privateKey, 'base64');
+ 
+   if (privateKey.length !== 32) {
+     throw new Error('Vapid private key should be 32 bytes long when decoded.');
 @@ -195,7 +195,7 @@ function getVapidHeaders(audience, subject, publicKey, privateKey, contentEncodi
    }
  
@@ -20,3 +38,12 @@ index c0305bd..ffdab16 100644
    } catch (err) {
      throw new Error('VAPID audience is not a url. ' + audience);
    }
+@@ -204,7 +204,7 @@ function getVapidHeaders(audience, subject, publicKey, privateKey, contentEncodi
+   validatePublicKey(publicKey);
+   validatePrivateKey(privateKey);
+ 
+-  privateKey = Buffer.from(privateKey, 'base64url');
++  privateKey = Buffer.from(privateKey, 'base64');
+ 
+   if (expiration) {
+     validateExpiration(expiration);
